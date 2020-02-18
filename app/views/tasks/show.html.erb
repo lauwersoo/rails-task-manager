@@ -1,3 +1,9 @@
-<h2><%= @tasks.title %></h2>
-<p><%= @tasks.details %></p>
-<p><%= @tasks.completed %></p>
+<h2><%= @task.title %></h2>
+<p>
+<% if @task.completed == true %>
+  <%= "✅" %>
+<% else %>
+  <%= "❌" %>
+<% end %>
+<%= @task.details %>
+</p>

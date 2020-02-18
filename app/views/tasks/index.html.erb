@@ -1,21 +1,27 @@
-<h1>Your tasks</h1>
-<ul>
-<% @tasks.each do |task| %>
-  <li>
-    <h4><%= task.title %></h4>
-    <p>Done? : <% if task.completed == true %>
-                                    <%= "Yes" %>
-                                  <% else %>
-                                    <%= "No" %>
-                                  <% end %>
-    </p>
-    <p><%= link_to "Update", edit_path(task)%>
-    <%= link_to "Delete", task_path(task),
-    method: :delete,
-    data: { confirm: "Are you sure?" } %></p>
-  </li>
-<% end %>
-</ul>
-<br>
-<br>
-<%= link_to "Add a new task", tasks_new_path %>
+<h1 class="title">Your tasks</h1>
+<div class="container d-flex flex-wrap">
+  <ul>
+  <% @tasks.each do |task| %>
+    <div class="container_card">
+      <li>
+        <h4><% if task.completed == true %>
+                                        <%= "✅" %>
+                                      <% else %>
+                                        <%= "❌" %>
+                                      <% end %>
+            <%= link_to "#{task.title}", task_path(task) %>
+        </h4>
+        <p><%= link_to "Update", edit_path(task)%>
+        <%= link_to "Delete", task_path(task),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %></p>
+      </li>
+    </div>
+  <% end %>
+  </ul>
+</div>
+<div class="container_footer">
+  <div class="footer">
+    <%= link_to "Add a new task", tasks_new_path %>
+  </div>
+</div>
